@@ -1,4 +1,4 @@
-DataMiningProjectFour
+Learning Ensembles
 =====================
 
 CSCE 5013 Data Mining project 4. Project description and requirements: http://uaf46365.ddns.uark.edu/dm/p4/instructions.html
