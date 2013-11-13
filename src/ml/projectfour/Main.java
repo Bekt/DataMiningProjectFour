@@ -15,20 +15,17 @@ import static java.lang.Math.sqrt;
 /**
  * @author kanat
  *
- * Observations:
- * - For bombing ensemble with random trees, the results are almost identical with N=1 and N=50
- * - Random forest with 100 tress is almost identical to bagging ensemble with 100 random trees
  */
 public class Main {
 
     static String[] learnerNames = {
-            "Baseline",
+            "BL",
             "1-nn",
             "5-nn",
-            "Entropy-Reducing Tree",
-            "Bagging ensemble (4 entropy reducing trees, and 1-nn)",
-            "Random forest with 100 trees",
-            "Bombing ensemble with 100 random trees, n=50"};
+            "ERT",
+            "Bag",
+            "RT",
+            "Bomb"};
 
     public static void main(String[] args) throws Exception {
 
@@ -41,8 +38,19 @@ public class Main {
 
         List<List<Double>> table = runLearners(data);
 
+        System.out.print(String.format("%-10s" , ""));
+        for (String name : learnerNames) {
+            System.out.print(String.format("%10s" , name));
+        }
+        System.out.println();
+
         for (List<Double> setResult : table) {
-            System.out.println(setResult.toString().replaceAll("[\\[\\]]", ""));
+            System.out.print(String.format("%-10s" , ""));
+
+            for (Double val : setResult) {
+                System.out.printf("%10.4f", val);
+            }
+            System.out.println();
         }
     }
 
